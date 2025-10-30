@@ -4,10 +4,10 @@
 # -------------------------------------------------------------------------
 # Website:       https://virtubox.net
 # GitHub:        https://github.com/VirtuBox/nginx-ee
-# Copyright (c) 2019-2024 VirtuBox <contact@virtubox.net>
+# Copyright (c) 2019-2025 VirtuBox <contact@virtubox.net>
 # This script is licensed under M.I.T
 # -------------------------------------------------------------------------
-# Version 3.8.1 - 2024-04-24
+# Version 3.8.2 - 2025-10-30
 # -------------------------------------------------------------------------
 
 ##################################
@@ -713,11 +713,11 @@ _patch_nginx() {
         echo -ne '       Applying nginx patches                 [..]\r'
 
         {
-#            if [ "$NGINX_RELEASE" = "2" ]; then
-#                curl -sL https://raw.githubusercontent.com/kn007/patch/e2fcf45e320bb8317042b6796b8f9dd42ffdb25c/nginx_dynamic_tls_records.patch | patch -p1
-#            else
+            if [ "$NGINX_RELEASE" = "2" ]; then
+                curl -sL https://raw.githubusercontent.com/kn007/patch/8d0b80fc4c39e8c29e3b131c74f7dace59b28d60/nginx_dynamic_tls_records.patch | patch -p1
+            else
                 curl -sL https://raw.githubusercontent.com/kn007/patch/refs/heads/master/nginx_dynamic_tls_records.patch | patch -p1
-#            fi
+            fi
         } >>/tmp/nginx-ee.log 2>&1
 
     }; then
